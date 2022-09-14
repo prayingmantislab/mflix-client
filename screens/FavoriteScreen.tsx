@@ -1,21 +1,9 @@
 import React from 'react';
-import {
-  FlatList,
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { FlatList, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import MainCard from '../components/MainCard';
 import CategoryTitle from '../components/CategoryTitle';
 import MoviePreview from '../components/MoviePreview';
 import MovieFavPreview from '../components/MovieFavPreview';
-// create a netflix clone app
-// create 2 carousels with movie cards in them (one for recomended movies, one for new movies)
-// create a search bar
-// create a tub navigation bar at the bottom of the screen for home, and favorites
-// create a main card component for the selected movie
 
 const moviesArray = [
   {
@@ -46,28 +34,16 @@ const moviesArray = [
       'https://m.media-amazon.com/images/M/MV5BNzY2ZDQ2MTctYzlhOC00MWJhLTgxMmItMDgzNDQwMDdhOWI2XkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_SX300.jpg',
   },
 ];
-export default function HomeScreen() {
+export default function FavoriteScreen() {
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar barStyle='light-content' />
-      <View style={styles.recomendedContainer}>
+      <View style={styles.itemContainer}>
         <CategoryTitle />
         <FlatList
+          style={styles.flatList}
           data={moviesArray}
-          renderItem={({ item }) => <MovieFavPreview />}
-          horizontal={true}
-        />
-      </View>
-      <CategoryTitle />
-      <View style={styles.mainContainer}>
-        <MainCard />
-      </View>
-      <View style={styles.newdContainer}>
-        <CategoryTitle />
-        <FlatList
-          data={moviesArray}
-          renderItem={({ item }) => <MoviePreview />}
-          horizontal={true}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => <MainCard />}
         />
       </View>
     </SafeAreaView>
@@ -79,14 +55,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#1a1a1a',
   },
-  recomendedContainer: {
-    flex: 1,
-  },
 
-  newdContainer: {
+  itemContainer: {
     flex: 1,
   },
-  mainContainer: {
+  flatList: {
     flex: 1,
+    marginBottom: 10,
   },
 });

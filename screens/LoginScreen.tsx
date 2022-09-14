@@ -26,7 +26,7 @@ export default function LoginScreen() {
       >
         <KeyboardAvoidingView>
           <View style={styles.titleContainer}>
-            <Text style={styles.titleText}>Menora Flix</Text>
+            <Text style={styles.titleText}>Netflix</Text>
           </View>
           <View style={styles.inputContainer}>
             <Text style={styles.loginText}>Login</Text>

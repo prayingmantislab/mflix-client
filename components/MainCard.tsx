@@ -16,7 +16,7 @@ export default function MainCard() {
 
       <View style={styles.textContainer}>
         <Text style={styles.cardTitle}>Superman Returns</Text>
-        <Text style={styles.innerText}>Year: 2018</Text>
+        <Text style={styles.innerText}>Year: 2019</Text>
         <Text style={styles.innerText}>imdbID: 123456</Text>
         <Text style={styles.innerText}>Type: Movie</Text>
       </View>
@@ -28,11 +28,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
-    paddingHorizontal: 20,
+    paddingHorizontal: 5,
+    margin: 10,
   },
   image: {
-    width: 250,
-    height: 250,
+    width: '50%',
+    height: '100%',
     resizeMode: 'cover',
     borderRadius: 5,
     flex: 1,
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: '#424141',
     color: '#a7a6a6',
-    width: 150,
+    width: '50%',
     height: 250,
     padding: 10,
     borderRadius: 5,
