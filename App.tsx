@@ -34,6 +34,7 @@ import HomeScreen from './screens/HomeScreen';
 import FavoriteScreen from './screens/FavoriteScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import BottomTabNavigator from './navigation/BottomTabNavigator';
 
 const Stack = createNativeStackNavigator();
 
@@ -43,14 +44,17 @@ const App = () => {
       <StatusBar barStyle='dark-content' />
       <Provider store={store}>
         <NavigationContainer>
-          <Stack.Navigator>
-            {/* <LoginScreen /> */}
-            {/* <HomeScreen /> */}
-            {/* <FavoriteScreen /> */}
-            <Stack.Screen name='Login' component={LoginScreen} />
-          </Stack.Navigator>
+          {/* <Stack.Navigator> */}
+          {/* <LoginScreen /> */}
+          {/* <HomeScreen /> */}
+          {/* <FavoriteScreen /> */}
+          {/* <Stack.Screen name='Login' component={LoginScreen} /> */}
+          {/* <Stack.Screen name='Home' component={HomeScreen} /> */}
+          {/* <Stack.Screen name='Favorite' component={FavoriteScreen} /> */}
+          {/* </Stack.Navigator> */}
         </NavigationContainer>
       </Provider>
+      <BottomTabNavigator />
     </>
   );
 };

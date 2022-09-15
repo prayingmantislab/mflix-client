@@ -11,11 +11,8 @@ import MainCard from '../components/MainCard';
 import CategoryTitle from '../components/CategoryTitle';
 import MoviePreview from '../components/MoviePreview';
 import MovieFavPreview from '../components/MovieFavPreview';
-// create a netflix clone app
-// create 2 carousels with movie cards in them (one for recomended movies, one for new movies)
-// create a search bar
-// create a tub navigation bar at the bottom of the screen for home, and favorites
-// create a main card component for the selected movie
+// pressing one of the movies in the list will take you to the movie details screen
+// where you can see more information about the movie
 
 const moviesArray = [
   {
@@ -29,21 +26,21 @@ const moviesArray = [
   },
   {
     id: '2',
-    title: 'Superman',
-    year: '2018',
-    imdbID: '123456',
-    type: 'Movie',
-    poster:
-      'https://m.media-amazon.com/images/M/MV5BNzY2ZDQ2MTctYzlhOC00MWJhLTgxMmItMDgzNDQwMDdhOWI2XkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_SX300.jpg',
+    Title: 'Top Gun: Maverick (2022)',
+    Year: '2022',
+    imdbID: 'tt20599972',
+    Type: 'movie',
+    Poster:
+      'https://m.media-amazon.com/images/M/MV5BYjNhOTUzZWItYjAzMy00ZmUxLWJmZWEtYTUyYTZmNzQ5YWZjXkEyXkFqcGdeQXVyMDY3OTcyOQ@@._V1_SX300.jpg',
   },
   {
     id: '3',
-    title: 'Superman',
-    year: '2018',
-    imdbID: '123456',
-    type: 'Movie',
-    poster:
-      'https://m.media-amazon.com/images/M/MV5BNzY2ZDQ2MTctYzlhOC00MWJhLTgxMmItMDgzNDQwMDdhOWI2XkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_SX300.jpg',
+    Title: 'DUNE the end of earth',
+    Year: '2022',
+    imdbID: 'tt20836186',
+    Type: 'movie',
+    Poster:
+      'https://m.media-amazon.com/images/M/MV5BMzk4MTQwYmYtODZmZS00NTBmLTg5YjctMzVmZjBiMTI1N2RkXkEyXkFqcGdeQXVyMTUzNDA2ODU2._V1_SX300.jpg',
   },
 ];
 export default function HomeScreen() {

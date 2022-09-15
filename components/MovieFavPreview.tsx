@@ -1,7 +1,8 @@
 // create a main card component for the selected movie
 // the comoonent should have an image, a title, a year, an imdbID and a type
 //the image should be a poster of superman
-import React from 'react';
+
+import React, { useState } from 'react';
 import {
   Button,
   Image,
@@ -15,6 +16,8 @@ import {
 // import { add } from '../src/features/favorite/favoritesSlice';
 
 export default function MovieFavPreview() {
+  const [MainCard, setMainCard] = useState({});
+  const addToMainCard = () => {};
   return (
     <View style={styles.container}>
       <Image
@@ -23,7 +26,12 @@ export default function MovieFavPreview() {
           uri: 'https://m.media-amazon.com/images/M/MV5BNzY2ZDQ2MTctYzlhOC00MWJhLTgxMmItMDgzNDQwMDdhOWI2XkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_SX300.jpg',
         }}
       />
-      <Pressable onPress={() => Alert.alert('pressed')} style={styles.button}>
+      <Pressable
+        onPress={() => {
+          addToMainCard;
+        }}
+        style={styles.button}
+      >
         <Image
           style={styles.favButton}
           source={require('../assets/star-icon.png')}
