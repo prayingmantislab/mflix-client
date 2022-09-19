@@ -62,5 +62,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#2f2e2e',
     justifyContent: 'flex-end',
     width: 120,
+    height: 20,
   },
 });

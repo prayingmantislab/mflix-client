@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   FlatList,
   SafeAreaView,
@@ -12,9 +12,7 @@ import CategoryTitle from '../components/CategoryTitle';
 import MoviePreview from '../components/MoviePreview';
 import MovieFavPreview from '../components/MovieFavPreview';
 import RecommondedList from '../components/RecommondedList';
-// pressing one of the movies in the list will take you to the movie details screen
-// where you can see more information about the movie
-
+import { fetchRecMovies, fetchNewMovies } from '../util/http';
 const moviesArray = [
   {
     id: '1',
@@ -45,6 +43,16 @@ const moviesArray = [
   },
 ];
 export default function HomeScreen() {
+  const [recMovies, setRecMovies] = useState([]);
+  const [newMovies, setNewMovies] = useState([]);
+  useEffect(() => {
+    async function fetchData() {
+      await fetchRecMovies();
+      await fetchNewMovies();
+    }
+    fetchData();
+  }, []);
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.recomendedContainer}>
