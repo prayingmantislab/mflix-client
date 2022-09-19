@@ -47,8 +47,12 @@ export default function HomeScreen() {
   const [newMovies, setNewMovies] = useState([]);
   useEffect(() => {
     async function fetchData() {
-      await fetchRecMovies();
-      await fetchNewMovies();
+      const rMovies = await fetchRecMovies();
+      const nMovies = await fetchNewMovies();
+      //@ts-ignore
+      setRecMovies(rMovies);
+      //@ts-ignore
+      setNewMovies(nMovies);
     }
     fetchData();
   }, []);
