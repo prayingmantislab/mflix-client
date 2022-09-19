@@ -11,6 +11,7 @@ import MainCard from '../components/MainCard';
 import CategoryTitle from '../components/CategoryTitle';
 import MoviePreview from '../components/MoviePreview';
 import MovieFavPreview from '../components/MovieFavPreview';
+import RecommondedList from '../components/RecommondedList';
 // pressing one of the movies in the list will take you to the movie details screen
 // where you can see more information about the movie
 
@@ -46,21 +47,21 @@ const moviesArray = [
 export default function HomeScreen() {
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar barStyle='light-content' />
       <View style={styles.recomendedContainer}>
-        <CategoryTitle />
+        <Text style={styles.categoryTitle}>Recommended Movies</Text>
         <FlatList
           data={moviesArray}
           renderItem={({ item }) => <MovieFavPreview />}
           horizontal={true}
         />
       </View>
-      <CategoryTitle />
+
+      <Text style={styles.categoryTitle}>Movie Description</Text>
       <View style={styles.mainContainer}>
         <MainCard />
       </View>
       <View style={styles.newdContainer}>
-        <CategoryTitle />
+        <Text style={styles.categoryTitle}>New Movies</Text>
         <FlatList
           data={moviesArray}
           renderItem={({ item }) => <MoviePreview />}
@@ -85,5 +86,13 @@ const styles = StyleSheet.create({
   },
   mainContainer: {
     flex: 1,
+  },
+  categoryTitle: {
+    paddingTop: 10,
+    color: '#dcdcdc',
+    fontSize: 25,
+    paddingBottom: 10,
+    fontWeight: 'bold',
+    paddingHorizontal: 30,
   },
 });

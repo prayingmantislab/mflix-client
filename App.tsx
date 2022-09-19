@@ -49,15 +49,14 @@ const Stack = createNativeStackNavigator();
 const App = () => {
   return (
     <>
-      <StatusBar barStyle='dark-content' />
-      <NavigationContainer>
-        <Provider store={store}>
+      <Provider store={store}>
+        <NavigationContainer>
           {/* <Drawer.Navigator>
             <Drawer.Screen name='Menu' component={MenuScreen} />
           </Drawer.Navigator> */}
-        </Provider>
-      </NavigationContainer>
-      <BottomTabNavigator />
+        </NavigationContainer>
+        <BottomTabNavigator />
+      </Provider>
     </>
   );
 };

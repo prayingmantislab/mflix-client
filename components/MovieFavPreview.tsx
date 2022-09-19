@@ -13,8 +13,6 @@ import {
   Alert,
 } from 'react-native';
 
-// import { add } from '../src/features/favorite/favoritesSlice';
-
 export default function MovieFavPreview() {
   const [MainCard, setMainCard] = useState({});
   const addToMainCard = () => {};
