@@ -10,6 +10,8 @@
 
 import React, { type PropsWithChildren } from 'react';
 import {
+  Alert,
+  Button,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -27,7 +29,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { store } from './store/redux/store';
+import { store } from './src/app/store';
 import { Provider } from 'react-redux';
 import LoginScreen from './screens/LoginScreen';
 import HomeScreen from './screens/HomeScreen';
@@ -36,29 +38,37 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 
+// import DrawerNavigator from './navigation/DrawerNavigator';
+
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import MenuScreen from './screens/MenuScreen';
+
+const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
     <>
       <StatusBar barStyle='dark-content' />
-      <Provider store={store}>
-        <NavigationContainer>
-          {/* <Stack.Navigator> */}
-          {/* <LoginScreen /> */}
-          {/* <HomeScreen /> */}
-          {/* <FavoriteScreen /> */}
-          {/* <Stack.Screen name='Login' component={LoginScreen} /> */}
-          {/* <Stack.Screen name='Home' component={HomeScreen} /> */}
-          {/* <Stack.Screen name='Favorite' component={FavoriteScreen} /> */}
-          {/* </Stack.Navigator> */}
-        </NavigationContainer>
-      </Provider>
+      <NavigationContainer>
+        <Provider store={store}>
+          {/* <Drawer.Navigator>
+            <Drawer.Screen name='Menu' component={MenuScreen} />
+          </Drawer.Navigator> */}
+        </Provider>
+      </NavigationContainer>
       <BottomTabNavigator />
     </>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  text: {
+    color: 'red',
+    fontSize: 20,
+    flex: 1,
+    justifyContent: 'center',
+  },
+});
 
 export default App;
