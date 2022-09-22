@@ -29,7 +29,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { store } from './src/app/store';
+import { store } from './store/redux/store.js';
 import { Provider } from 'react-redux';
 import LoginScreen from './screens/LoginScreen';
 import HomeScreen from './screens/HomeScreen';
