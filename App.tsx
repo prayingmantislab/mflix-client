@@ -42,6 +42,7 @@ import BottomTabNavigator from './navigation/BottomTabNavigator';
 
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import MenuScreen from './screens/MenuScreen';
+import CategoryScreen from './screens/CategoryScreen.js';
 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
@@ -49,14 +50,14 @@ const Stack = createNativeStackNavigator();
 const App = () => {
   return (
     <>
-      <Provider store={store}>
-        <NavigationContainer>
-          {/* <Drawer.Navigator>
+      <BottomTabNavigator />
+      {/* <Provider store={store}>
+        
+      {/* <Drawer.Navigator>
             <Drawer.Screen name='Menu' component={MenuScreen} />
           </Drawer.Navigator> */}
-        </NavigationContainer>
-        <BottomTabNavigator />
-      </Provider>
+      {/* </NavigationContainer> */}
+      {/* </Provider> */}
     </>
   );
 };

@@ -24,12 +24,7 @@ export default function MovieFavPreview() {
           uri: 'https://m.media-amazon.com/images/M/MV5BNzY2ZDQ2MTctYzlhOC00MWJhLTgxMmItMDgzNDQwMDdhOWI2XkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_SX300.jpg',
         }}
       />
-      <Pressable
-        onPress={() => {
-          addToMainCard;
-        }}
-        style={styles.button}
-      >
+      <Pressable style={styles.button}>
         <Image
           style={styles.favButton}
           source={require('../assets/star-icon.png')}

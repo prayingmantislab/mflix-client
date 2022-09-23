@@ -13,6 +13,10 @@ import MoviePreview from '../components/MoviePreview';
 import MovieFavPreview from '../components/MovieFavPreview';
 import RecommondedList from '../components/RecommondedList';
 import { fetchRecMovies, fetchNewMovies } from '../util/http';
+import { useDispatch, useSelector } from 'react-redux';
+import { addFavorite, removeFavorite } from '../store/redux/favorites';
+import CategoryScreen from './CategoryScreen';
+
 const moviesArray = [
   {
     id: '1',
@@ -42,32 +46,46 @@ const moviesArray = [
       'https://m.media-amazon.com/images/M/MV5BMzk4MTQwYmYtODZmZS00NTBmLTg5YjctMzVmZjBiMTI1N2RkXkEyXkFqcGdeQXVyMTUzNDA2ODU2._V1_SX300.jpg',
   },
 ];
-export default function HomeScreen() {
-  const [recMovies, setRecMovies] = useState([]);
-  const [newMovies, setNewMovies] = useState([]);
-  useEffect(() => {
-    async function fetchData() {
-      const rMovies = await fetchRecMovies();
-      const nMovies = await fetchNewMovies();
-      //@ts-ignore
-      setRecMovies(rMovies);
-      //@ts-ignore
-      setNewMovies(nMovies);
-    }
-    fetchData();
-  }, []);
+export default function HomeScreen({
+  //@ts-ignore
+  route,
+  //@ts-ignore
+  navigation,
+}) {
+  // const favoriteMovies = useSelector(
+  //   // @ts-ignore
+  //   (state) => state.favoriteMovies.ids
+  // );
+
+  // const dispatch = useDispatch();
+
+  // const movieId = route.params?.movieId;
+
+  // function changeFavoriteStatusHandler(movieId: string) {
+  //   const movieIsFavorite = favoriteMovies.includes(movieId);
+  //   if (movieIsFavorite) {
+  //     dispatch(removeFavorite({ id: favoriteMovieId }));
+  //   } else {
+  //     dispatch(addFavorite({ id: favoriteMovieId }));
+  //   }
+  // }
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.recomendedContainer}>
-        <Text style={styles.categoryTitle}>Recommended Movies</Text>
-        <FlatList
+      {/* <View style={styles.recomendedContainer}>
+        <Text style={styles.categoryTitle}>Recommended Movies</Text> */}
+      <CategoryScreen />
+      {/* <FlatList
           data={moviesArray}
-          renderItem={({ item }) => <MovieFavPreview />}
+          renderItem={({ item }) => (
+            <MovieFavPreview
+              onFavoriteItemClick={changeFavoriteStatusHandler}
+            />
+          )}
           horizontal={true}
-        />
-      </View>
-
+        /> */}
+      {/* </View> */}
+      {/* 
       <Text style={styles.categoryTitle}>Movie Description</Text>
       <View style={styles.mainContainer}>
         <MainCard />
@@ -79,7 +97,7 @@ export default function HomeScreen() {
           renderItem={({ item }) => <MoviePreview />}
           horizontal={true}
         />
-      </View>
+      </View> */}
     </SafeAreaView>
   );
 }
