@@ -1,13 +1,4 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
-
+import 'react-native-gesture-handler';
 import React, { type PropsWithChildren } from 'react';
 import {
   Alert,
@@ -37,9 +28,7 @@ import FavoriteScreen from './screens/FavoriteScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
-
-// import DrawerNavigator from './navigation/DrawerNavigator';
-
+import DrawerNavigator from './navigation/DrawerNavigator';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import MenuScreen from './screens/MenuScreen';
 import CategoryScreen from './screens/CategoryScreen.js';
@@ -50,14 +39,14 @@ const Stack = createNativeStackNavigator();
 const App = () => {
   return (
     <>
-      <BottomTabNavigator />
-      {/* <Provider store={store}>
-        
-      {/* <Drawer.Navigator>
+      <Provider store={store}>
+        <NavigationContainer>
+          <Drawer.Navigator>
             <Drawer.Screen name='Menu' component={MenuScreen} />
-          </Drawer.Navigator> */}
-      {/* </NavigationContainer> */}
-      {/* </Provider> */}
+          </Drawer.Navigator>
+        </NavigationContainer>
+        <BottomTabNavigator />
+      </Provider>
     </>
   );
 };
@@ -65,9 +54,9 @@ const App = () => {
 const styles = StyleSheet.create({
   text: {
     color: 'red',
-    fontSize: 20,
     flex: 1,
     justifyContent: 'center',
+    fontSize: 20,
   },
 });
 
