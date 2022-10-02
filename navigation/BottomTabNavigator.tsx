@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/HomeScreen';
 import FavoriteScreen from '../screens/FavoriteScreen';
 import { NavigationContainer } from '@react-navigation/native';
+import CategoryScreen from '../screens/CategoryScreen';
 
 const BottomTab = createBottomTabNavigator();
 
@@ -14,9 +15,12 @@ const BottomTabNavigator = () => {
         <BottomTab.Screen
           // change the background color of the tab to red
           // add home icon to tab
+
           options={{
-            //change the background color of the screen header to red
+            //change the background color of the screen header to black
             //change the text color of the screen header to white
+            //change the the background color of the screen to black
+
             headerStyle: {
               backgroundColor: 'red',
             },
@@ -29,9 +33,10 @@ const BottomTabNavigator = () => {
             tabBarStyle: { backgroundColor: 'black' },
           }}
           name='My Home'
-          component={HomeScreen}
+          component={CategoryScreen}
         />
         <BottomTab.Screen
+          // change the background color of the screen to black
           options={{
             headerShown: false,
 

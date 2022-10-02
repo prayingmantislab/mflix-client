@@ -1,24 +1,25 @@
 import {View,Pressable, Image,Text,StyleSheet,Platform} from 'react-native'
 
 function MovieItem ({poster,title}) {
-  console.log(poster)
+  
   return (
-    <View>
+
+        <View style={styles.mealItem}>
       <Pressable>
-        <View style={styles.container}>
         <Image
          source={{uri:poster}}
          style={styles.image}
          /> 
-        </View>
+
       </Pressable>
       <Pressable style={styles.button}>
-        <Image
-          style={styles.favButton}
-          source={require('../assets/star-icon.png')}
-        />
-      </Pressable>
-    </View>
+       <Image
+           style={styles.favButton}
+        source={require('../assets/star-icon.png')}
+         />
+       </Pressable>
+       </View>
+      
   )
 }
 
@@ -26,16 +27,21 @@ export default MovieItem
 
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: 10,
+  mealItem: {
+    marginTop: 50,
+    margin: 16,
+    borderRadius: 8,
+    overflow: Platform.OS === 'android' ? 'hidden' : 'visible',
+    backgroundColor: 'white',
+    elevation: 4,
+    shadowColor: 'black',
+    shadowOpacity: 0.25,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 8,
   },
   image: {
-    width: 120,
-    height: 200,
-    resizeMode: 'cover',
-    borderRadius: 5,
-    flex: 1,
+    width: '100%',
+    height: 180,
   },
   favButton: {
     width: 20,

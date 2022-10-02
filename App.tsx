@@ -40,11 +40,11 @@ const App = () => {
   return (
     <>
       <Provider store={store}>
-        <NavigationContainer>
+        {/* <NavigationContainer>
           <Drawer.Navigator>
             <Drawer.Screen name='Menu' component={MenuScreen} />
-          </Drawer.Navigator>
-        </NavigationContainer>
+   /       </Drawer.Navigator>
+        </NavigationContainer> */}
         <BottomTabNavigator />
       </Provider>
     </>
