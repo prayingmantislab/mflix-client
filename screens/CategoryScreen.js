@@ -46,7 +46,7 @@ export default CategoryScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
+    padding: 10,
     backgroundColor: '#1a1a1a',
   },
   Details: {
