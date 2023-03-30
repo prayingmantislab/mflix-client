@@ -8,34 +8,40 @@ import {
   Platform,
 } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import { addFavorite, removeFavorite } from '../store/redux/favorites';
-import { MOVIES } from '../data/dummy-data';
+// import { addFavorite, removeFavorite } from '../store/redux/favorites';
 import { Route, useNavigation } from '@react-navigation/native';
 
 interface MovieItemProps {
   poster: string;
   title: string;
-  route: Route<string, { movieId: string }>;
+  year: string;
+  // route: Route<string, { movieId: string }>;
 }
 
-const MovieItem: React.FC<MovieItemProps> = ({ poster, title, route }) => {
-  const favoriteMovieIds = useSelector(
-    (state: any) => state.favoriteMovies.ids
-  );
-  const dispatch = useDispatch();
+const MovieItem: React.FC<MovieItemProps> = ({
+  poster,
+  title,
+  year,
+  // route,
+  // onItemClick,
+}) => {
+  // const favoriteMovieIds = useSelector(
+  //   (state: any) => state.favoriteMovies.ids
+  // );
+  // const dispatch = useDispatch();
   //@ts-ignore
-  const { movieId } = '1';
+  // const { movieId } = '1';
   // const { movieId } = route.params;
-  const selectedMovie = MOVIES.find((movie) => movie.id === movieId);
+  // const selectedMovie = RECOMENDED_MOVIES.find((movie) => movie.id === movieId);
 
-  const movieIsFavorite = favoriteMovieIds.includes(movieId);
-  const changeFavoriteStatusHandler = () => {
-    if (movieIsFavorite) {
-      dispatch(removeFavorite({ id: movieId }));
-    } else {
-      dispatch(addFavorite({ id: movieId }));
-    }
-  };
+  // const movieIsFavorite = favoriteMovieIds.includes(movieId);
+  // const changeFavoriteStatusHandler = () => {
+  // if (movieIsFavorite) {
+  //   dispatch(removeFavorite({ id: movieId }));
+  // } else {
+  //   dispatch(addFavorite({ id: movieId }));
+  // }
+  // };
 
   return (
     <View style={styles.mealItem}>
