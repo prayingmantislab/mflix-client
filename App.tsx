@@ -42,7 +42,7 @@ const App = () => {
       <Provider store={store}>
         <NavigationContainer>
           <Drawer.Navigator>
-            <Drawer.Screen name='Menu' component={MenuScreen} />
+            <Drawer.Screen name=' ' component={MenuScreen} />
           </Drawer.Navigator>
         </NavigationContainer>
         <BottomTabNavigator />
