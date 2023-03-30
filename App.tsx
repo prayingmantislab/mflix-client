@@ -12,14 +12,6 @@ import {
   View,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
 import { store } from './store/redux/store.js';
 import { Provider } from 'react-redux';
 import LoginScreen from './screens/LoginScreen';
@@ -40,11 +32,11 @@ const App = () => {
   return (
     <>
       <Provider store={store}>
-        <NavigationContainer>
+        {/* <NavigationContainer>
           <Drawer.Navigator>
             <Drawer.Screen name=' ' component={MenuScreen} />
           </Drawer.Navigator>
-        </NavigationContainer>
+        </NavigationContainer> */}
         <BottomTabNavigator />
       </Provider>
     </>
