@@ -3,24 +3,28 @@
 //the image should be a poster of superman
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
-
+import { RECOMENDED_MOVIES } from '../data/dummy-data';
 export default function MainCard() {
+  const movie = RECOMENDED_MOVIES[0];
   return (
-    <View style={styles.container}>
-      <Image
-        style={styles.image}
-        source={{
-          uri: 'https://m.media-amazon.com/images/M/MV5BNzY2ZDQ2MTctYzlhOC00MWJhLTgxMmItMDgzNDQwMDdhOWI2XkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_SX300.jpg',
-        }}
-      />
+    <>
+      <Text style={styles.categoryTitle}>Movie Description</Text>
+      <View style={styles.container}>
+        <Image
+          style={styles.image}
+          source={{
+            uri: movie.posterUrl,
+          }}
+        />
 
-      <View style={styles.textContainer}>
-        <Text style={styles.cardTitle}>Superman Returns</Text>
-        <Text style={styles.innerText}>Year: 2019</Text>
-        <Text style={styles.innerText}>imdbID: 123456</Text>
-        <Text style={styles.innerText}>Type: Movie</Text>
+        <View style={styles.textContainer}>
+          <Text style={styles.cardTitle}>{movie.title}</Text>
+          <Text style={styles.innerText}>Year: {movie.year}</Text>
+          <Text style={styles.innerText}>imdbID: {movie.imdbId}</Text>
+          <Text style={styles.innerText}>Type: {movie.type}</Text>
+        </View>
       </View>
-    </View>
+    </>
   );
 }
 
@@ -31,9 +35,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 5,
     margin: 10,
   },
+  categoryTitle: {
+    color: '#6b6969',
+    fontWeight: 'bold',
+    fontSize: 20,
+    justifyContent: 'flex-start',
+  },
   image: {
     width: '50%',
-    height: '100%',
+    aspectRatio: 1,
     resizeMode: 'cover',
     borderRadius: 5,
     flex: 1,
@@ -44,10 +54,11 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: '#424141',
     color: '#a7a6a6',
-    width: '50%',
-    height: '100%',
+
     padding: 10,
     borderRadius: 5,
+    width: '50%',
+    aspectRatio: 1,
   },
   cardTitle: {
     color: '#dcdcdc',
@@ -56,7 +67,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
-    paddingBottom: 50,
   },
   innerText: {
     color: '#cac7c7',

@@ -11,7 +11,9 @@ const BottomTab = createBottomTabNavigator();
 const BottomTabNavigator = () => {
   return (
     <NavigationContainer>
-      <BottomTab.Navigator>
+      <BottomTab.Navigator
+      //@ts-ignore
+      >
         <BottomTab.Screen
           // change the background color of the tab to red
           // add home icon to tab

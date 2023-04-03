@@ -10,6 +10,8 @@ import {
   selectIsLoading,
   selectError,
 } from '../store/redux/recommendedSlice';
+import { ScrollView } from 'react-native-gesture-handler';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 function CategoryScreen() {
@@ -44,7 +46,9 @@ function CategoryScreen() {
     <View style={StyleSheet.container}>
       {/* {(error)&&<View>{error}</View> } */}
       {/* {(isLoading)&&<View>isLoading...</View> } */}
-      <View>
+        <ScrollView>
+      <SafeAreaView>
+      <View style={styles.carusele}>
         <FlatList
           data={recomendedMovies}
           keyExtractor={(item) => item.id}
@@ -55,14 +59,16 @@ function CategoryScreen() {
       <View style={styles.Details}>
         <MainCard />
       </View>
-      <View>
+      <View style={styles.carusele}>
         <FlatList
-          data={MOVIES}
+          data={recomendedMovies}
           keyExtractor={(item) => item.id}
           renderItem={renderCategoryItem}
           horizontal={true}
         />
       </View>
+      </SafeAreaView>
+      </ScrollView>
     </View>
   );
 }
@@ -75,11 +81,15 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: '#1a1a1a',
   },
-  Details: {
-    height: 200,
+  carusele: {
+    height: '40%',
     width: '100%',
   },
-  carusele: {
-    flex: 1,
+  Details: {
+    height: '30%',
+    width: '100%',
   },
+  // carusele: {
+  //   flex: 1,
+  // },
 });
