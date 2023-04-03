@@ -3,7 +3,7 @@ import { MOVIES } from '../data/dummy-data';
 import MovieItem from '../components/MovieItem';
 import MainCard from '../components/MainCard';
 import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch,getState } from 'react-redux';
 import {
   fetchData,
   selectData,
@@ -13,6 +13,7 @@ import {
 
 
 function CategoryScreen() {
+
   function renderCategoryItem(itemData) {
     console.log('liran',itemData.item )
     return (
