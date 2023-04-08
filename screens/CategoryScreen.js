@@ -10,6 +10,12 @@ import {
   selectIsLoading,
   selectError,
 } from '../store/redux/recommendedSlice';
+import {
+  fetchNewData,
+  selectNewData,
+  selectNewIsLoading,
+  selectNewError,
+} from '../store/redux/newSlice';
 import { ScrollView } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -41,15 +47,16 @@ function CategoryScreen() {
 
   const dispatch = useDispatch();
   
-  const recomendedMovies = useSelector(selectRecData);
-  const newMovies = useSelector(selectRecData);
+  const recommendedMovies = useSelector(selectRecData);
+  const newMovies = useSelector(selectNewData);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
-  console.log("asi",recomendedMovies)
+  console.log("asi",recommendedMovies)
 
   useEffect(() => {
-    dispatch(fetchRecData());
+    dispatch(fetchRecData()),
+    dispatch(fetchNewData())
   }, [dispatch]);
 
   return (
@@ -64,7 +71,7 @@ function CategoryScreen() {
 
       <View style={styles.carusele}>
         <FlatList
-          data={recomendedMovies}
+          data={recommendedMovies}
           keyExtractor={(item) => item.id}
           renderItem={renderCategoryItem}
           horizontal={true}

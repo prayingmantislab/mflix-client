@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { NEW_MOVIES } from '../../data/dummy-data';
 // Define a thunk to fetch the data from the API
-export const fetchData = createAsyncThunk('recommended/fetchData', async () => {
+export const fetchNewData = createAsyncThunk('new/fetchNewData', async () => {
   
   //TODO: when BE is ready reapace with this
   // const response = await axios.get('/api/recomended-moview');
@@ -27,15 +27,15 @@ const newSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchData.pending, (state, action) => {
+    builder.addCase(fetchNewData.pending, (state, action) => {
       state.isLoading = true;
       state.error = null;
     });
-    builder.addCase(fetchData.fulfilled, (state, action) => {
+    builder.addCase(fetchNewData.fulfilled, (state, action) => {
       state.isLoading = false;
       state.data = action.payload;
     });
-    builder.addCase(fetchData.rejected, (state, action) => {
+    builder.addCase(fetchNewData.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.error.message;
     });
@@ -46,7 +46,7 @@ const newSlice = createSlice({
 export const {} = newSlice.actions;
 export default newSlice.reducer;
 
-export const selectData = (state) => {
+export const selectNewData = (state) => {
   return state.new.data;
 };
 export const selectIsLoading = (state) => state.new.isLoading;
