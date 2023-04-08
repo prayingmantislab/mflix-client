@@ -5,8 +5,8 @@ import MainCard from '../components/MainCard';
 import { useEffect } from 'react';
 import { useSelector, useDispatch,getState } from 'react-redux';
 import {
-  fetchData,
-  selectData,
+  fetchRecData,
+  selectRecData,
   selectIsLoading,
   selectError,
 } from '../store/redux/recommendedSlice';
@@ -28,16 +28,28 @@ function CategoryScreen() {
       />
     );
   }
+
+  function renderNewMovies(itemData) {
+    return (
+      <MovieItem
+        poster={itemData.item.posterUrl}
+        title={itemData.item.title}
+        year={itemData.item.year}
+      />
+    );
+  }
+
   const dispatch = useDispatch();
   
-  const recomendedMovies = useSelector(selectData);
+  const recomendedMovies = useSelector(selectRecData);
+  const newMovies = useSelector(selectRecData);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
   console.log("asi",recomendedMovies)
 
   useEffect(() => {
-    dispatch(fetchData());
+    dispatch(fetchRecData());
   }, [dispatch]);
 
   return (
@@ -48,6 +60,8 @@ function CategoryScreen() {
       {/* {(isLoading)&&<View>isLoading...</View> } */}
         <ScrollView>
       <SafeAreaView>
+      <Text style={styles.categoryTitle}>Recomended Movies</Text>
+
       <View style={styles.carusele}>
         <FlatList
           data={recomendedMovies}
@@ -60,8 +74,10 @@ function CategoryScreen() {
         <MainCard />
       </View>
       <View style={styles.carusele}>
+      <Text style={styles.categoryTitle}>New Movies</Text>
+
         <FlatList
-          data={recomendedMovies}
+          data={newMovies}
           keyExtractor={(item) => item.id}
           renderItem={renderCategoryItem}
           horizontal={true}
@@ -80,6 +96,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     backgroundColor: '#1a1a1a',
+
   },
   carusele: {
     height: '40%',
@@ -89,7 +106,10 @@ const styles = StyleSheet.create({
     height: '30%',
     width: '100%',
   },
-  // carusele: {
-  //   flex: 1,
-  // },
+  categoryTitle: {
+    color: '#6b6969',
+    fontWeight: 'bold',
+    fontSize: 20,
+    justifyContent: 'flex-start',
+  },
 });

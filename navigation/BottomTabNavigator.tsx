@@ -12,6 +12,7 @@ const BottomTabNavigator = () => {
   return (
     <NavigationContainer>
       <BottomTab.Navigator
+
       //@ts-ignore
       >
         <BottomTab.Screen
