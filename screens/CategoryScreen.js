@@ -1,8 +1,8 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { MOVIES } from '../data/dummy-data';
 import MovieItem from '../components/MovieItem';
-import MainCard from '../components/MainCard';
-import { useEffect } from 'react';
+import SelectedMovie from '../components/SelectedMovie';
+import { useState,useEffect } from 'react';
 import { useSelector, useDispatch,getState } from 'react-redux';
 import {
   fetchRecData,
@@ -21,18 +21,33 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 function CategoryScreen() {
+//if i press on a movie i want to get the id of the movie and send it to the movie selectedMovie component
+//i want to get the id of the movie and send it to the movie selectedMovie component
 
+  const [selectedMovie, setSelectedMovie] = useState(null);
   function renderCategoryItem(itemData) {
-    console.log('liran',itemData.item )
+    console.log('selectedMovie',selectedMovie)
     return (
       <MovieItem
         poster={itemData.item.posterUrl}
         title={itemData.item.title}
         year={itemData.item.year}
         type={itemData.item.type}
-        // onPress={()=>seState(itemData.item.id)}
+        onPress={() => setSelectedMovie(itemData.item.id)}
       />
     );
+  }
+
+
+  function renderSelectedMovie() {
+    if (selectedMovie) {
+      return (
+        <SelectedMovie
+          movieId={selectedMovie}
+          onPress={() => setSelectedMovie(null)}
+        />
+      );
+    }
   }
 
   function renderNewMovies(itemData) {
@@ -41,6 +56,8 @@ function CategoryScreen() {
         poster={itemData.item.posterUrl}
         title={itemData.item.title}
         year={itemData.item.year}
+        type={itemData.item.type}
+        onPress={() => setSelectedMovie(itemData.item.id)}
       />
     );
   }
@@ -59,6 +76,7 @@ function CategoryScreen() {
     dispatch(fetchNewData())
   }, [dispatch]);
 
+  console.log(selectedMovie)
   return (
 
 
@@ -78,7 +96,7 @@ function CategoryScreen() {
         />
       </View>
       <View style={styles.Details}>
-        <MainCard />
+        {renderSelectedMovie()}
       </View>
       <View style={styles.carusele}>
       <Text style={styles.categoryTitle}>New Movies</Text>
@@ -86,7 +104,7 @@ function CategoryScreen() {
         <FlatList
           data={newMovies}
           keyExtractor={(item) => item.id}
-          renderItem={renderCategoryItem}
+          renderItem={renderNewMovies}
           horizontal={true}
         />
       </View>

@@ -7,7 +7,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import MainCard from '../components/MainCard';
+import MainCard from '../components/SelectedMovie';
 import CategoryTitle from '../components/CategoryTitle';
 import MoviePreview from '../components/MoviePreview';
 import MovieFavPreview from '../components/MovieFavPreview';

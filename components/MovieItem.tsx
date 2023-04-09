@@ -8,7 +8,6 @@ import {
   Platform,
 } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-// import { addFavorite, removeFavorite } from '../store/redux/favorites';
 import { Route, useNavigation } from '@react-navigation/native';
 
 interface MovieItemProps {
