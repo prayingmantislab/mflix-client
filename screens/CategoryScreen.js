@@ -25,6 +25,7 @@ function CategoryScreen() {
 //i want to get the id of the movie and send it to the movie selectedMovie component
 
   const [selectedMovie, setSelectedMovie] = useState(null);
+  
   function renderCategoryItem(itemData) {
     console.log('selectedMovie',selectedMovie)
     return (
@@ -57,7 +58,7 @@ function CategoryScreen() {
         title={itemData.item.title}
         year={itemData.item.year}
         type={itemData.item.type}
-        onPress={() => setSelectedMovie(itemData.item.id)}
+        onPress={() => setSelectedMovie(itemData)}
       />
     );
   }
@@ -81,10 +82,10 @@ function CategoryScreen() {
 
 
     <View style={StyleSheet.container}>
+      <ScrollView> 
       {/* {(error)&&<View>{error}</View> } */}
       {/* {(isLoading)&&<View>isLoading...</View> } */}
-        <ScrollView>
-      <SafeAreaView>
+      {/* <SafeAreaView> */}
       <Text style={styles.categoryTitle}>Recomended Movies</Text>
 
       <View style={styles.carusele}>
@@ -93,10 +94,16 @@ function CategoryScreen() {
           keyExtractor={(item) => item.id}
           renderItem={renderCategoryItem}
           horizontal={true}
+
         />
       </View>
       <View style={styles.Details}>
-        {renderSelectedMovie()}
+      {selectedMovie && (
+        <SelectedMovie
+          movieId={selectedMovie}
+          onPress={() => setSelectedMovie(null)}
+        />
+      )}
       </View>
       <View style={styles.carusele}>
       <Text style={styles.categoryTitle}>New Movies</Text>
@@ -108,9 +115,10 @@ function CategoryScreen() {
           horizontal={true}
         />
       </View>
-      </SafeAreaView>
+      {/* </SafeAreaView> */}
       </ScrollView>
     </View>
+
   );
 }
 
@@ -124,11 +132,11 @@ const styles = StyleSheet.create({
 
   },
   carusele: {
-    height: '40%',
     width: '100%',
+    flex: 1,
   },
   Details: {
-    height: '30%',
+    flex: 1,
     width: '100%',
   },
   categoryTitle: {
