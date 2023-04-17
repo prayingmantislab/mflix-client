@@ -20,6 +20,11 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 
+const MovieListItem = ({item, onPress}) => (
+  
+
+
+
 function CategoryScreen() {
 //if i press on a movie i want to get the id of the movie and send it to the movie selectedMovie component
 //i want to get the id of the movie and send it to the movie selectedMovie component
@@ -83,9 +88,7 @@ function CategoryScreen() {
 
     <View style={StyleSheet.container}>
       <ScrollView> 
-      {/* {(error)&&<View>{error}</View> } */}
-      {/* {(isLoading)&&<View>isLoading...</View> } */}
-      {/* <SafeAreaView> */}
+    
       <Text style={styles.categoryTitle}>Recomended Movies</Text>
 
       <View style={styles.carusele}>

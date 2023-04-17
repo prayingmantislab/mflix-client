@@ -43,7 +43,7 @@ const MovieItem: React.FC<MovieItemProps> = ({
   // };
 
   return (
-    <View style={styles.mealItem}>
+    <View style={styles.movieItem}>
       <Pressable>
         <Image source={{ uri: poster }} style={styles.image} />
       </Pressable>
@@ -60,7 +60,7 @@ const MovieItem: React.FC<MovieItemProps> = ({
 export default MovieItem;
 
 const styles = StyleSheet.create({
-  mealItem: {
+  movieItem: {
     marginTop: 20,
     margin: 16,
     borderRadius: 8,

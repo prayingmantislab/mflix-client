@@ -1,59 +1,35 @@
-import React, { useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity } from 'react-native';
+import { useState,useEffect } from 'react';
+import { View, Text, FlatList, TouchableOpacity,  StyleSheet,  Image,
 
-const movies = [
-  {
-    id: 1,
-    title: 'The Shawshank Redemption',
-    year: 1994,
-    genre: 'Drama',
-    rating: 9.3,
-    description:
-      'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.',
-  },
-  {
-    id: 2,
-    title: 'The Godfather',
-    year: 1972,
-    genre: 'Crime',
-    rating: 9.2,
-    description:
-      'The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.',
-  },
-  // ... other movies
-];
-
-const newMovies = [
-  {
-    id: 3,
-    title: 'Dune',
-    year: 2021,
-    genre: 'Drama',
-    rating: 9.3,
-    description:
-      'The story of paul muadib and his family, who are thrust into a galaxy-spanning adventure when the tyrannical emperor shaddam iv attempts to seize control of the desert planet arrakis.'
-  },
-  {
-    id: 4,
-    title: 'Everything everywhere all at once',
-    year: 2022,
-    genre: 'Action',
-    rating: 9.2,
-    description:
-      'a surialistic movie about the connection between a mother and her daughter fighting in an multiverse battle.'
-  },
-  // ... other movies
-];
+} from 'react-native';
+import { useSelector, useDispatch,getState } from 'react-redux';
+import {
+  fetchRecData,
+  selectRecData,
+  selectIsLoading,
+  selectError,
+} from '../store/redux/recommendedSlice';
+import {
+  fetchNewData,
+  selectNewData,
+  selectNewIsLoading,
+  selectNewError,
+} from '../store/redux/newSlice';
 
 const MovieListItem = ({ item, onPress }) => {
   return (
+    <View style={styles.movieItem}>
+
     <TouchableOpacity onPress={onPress}>
       <View style={{ padding: 10 }}>
+      <Image source={{ uri: item.posterUrl }} style={styles.image} />
         <Text style={{ fontSize: 18, fontWeight: 'bold' }}>{item.title}</Text>
         <Text style={{ fontSize: 14 }}>{item.year}</Text>
         <Text style={{ fontSize: 14 }}>{item.genre}</Text>
       </View>
     </TouchableOpacity>
+    </View>
+
   );
 };
 
@@ -70,6 +46,20 @@ const MovieDetails = ({ item }) => {
 };
 
 const MoviesScreen = () => {
+
+  const dispatch = useDispatch();
+  
+  const recommendedMovies = useSelector(selectRecData);
+  const newMovies = useSelector(selectNewData);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+
+  console.log("asi",recommendedMovies)
+
+  useEffect(() => {
+    dispatch(fetchRecData()),
+    dispatch(fetchNewData())
+  }, [dispatch]);
   const [selectedMovie, setSelectedMovie] = useState({
     id: 1,
     title: 'The Shawshank Redemption',
@@ -97,7 +87,7 @@ const MoviesScreen = () => {
 
   return (
     <View style={{ flex: 1 }}>
-      <FlatList data={movies} renderItem={renderItem} keyExtractor={(item) => item.id.toString()} />
+      <FlatList data={recommendedMovies} renderItem={renderItem} keyExtractor={(item) => item.id.toString()} />
       {renderDetails()}
       <FlatList data={newMovies} renderItem={renderItem} keyExtractor={(item) => item.id.toString()} />
     </View>
@@ -105,3 +95,19 @@ const MoviesScreen = () => {
 };
 
 export default MoviesScreen;
+
+
+const styles = StyleSheet.create({
+  movieItem: {
+    marginTop: 20,
+    margin: 16,
+    borderRadius: 8,
+    overflow: Platform.OS === 'android' ? 'hidden' : 'visible',
+    shadowOpacity: 0.25,
+    shadowRadius: 8,
+  },
+  image: {
+    width: '100%',
+    height: 180,
+  },
+});
