@@ -1,5 +1,5 @@
 import { useState,useEffect } from 'react';
-import { View, Text, FlatList, TouchableOpacity,  StyleSheet,  Image,
+import { View, Text, FlatList, Pressable,  StyleSheet,  Image,
 
 } from 'react-native';
 import { useSelector, useDispatch,getState } from 'react-redux';
@@ -20,14 +20,15 @@ const MovieListItem = ({ item, onPress }) => {
   return (
     <View style={styles.movieItem}>
 
-    <TouchableOpacity onPress={onPress}>
-      <View style={{ padding: 10 }}>
+    <Pressable onPress={onPress}>
       <Image source={{ uri: item.posterUrl }} style={styles.image} />
-        <Text style={{ fontSize: 18, fontWeight: 'bold' }}>{item.title}</Text>
-        <Text style={{ fontSize: 14 }}>{item.year}</Text>
-        <Text style={{ fontSize: 14 }}>{item.genre}</Text>
-      </View>
-    </TouchableOpacity>
+    </Pressable>
+    <Pressable style = {styles.button}>
+    <Image
+          style={styles.favButton}
+          source={require('../assets/star-icon.png')}
+        />
+    </Pressable>
     </View>
 
   );
@@ -35,13 +36,24 @@ const MovieListItem = ({ item, onPress }) => {
 
 const MovieDetails = ({ item }) => {
   return (
+    <>
+          <Text style={styles.categoryTitle}>Movie Description</Text>
+          <View style={styles.container}>
+
+    <Image
+          style={styles.image}
+          source={{
+            uri: item?.posterUrl,
+          }}
+        />
     <View style={{ padding: 10 }}>
-      <Text style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 10 }}>{item.title}</Text>
-      <Text style={{ fontSize: 14, marginBottom: 10 }}>{item.year}</Text>
-      <Text style={{ fontSize: 14, marginBottom: 10 }}>{item.genre}</Text>
-      <Text style={{ fontSize: 14 }}>{item.description}</Text>
-      <Text style={{ fontSize: 14, marginTop: 10 }}>Rating: {item.rating}</Text>
+      <Text style={styles.categoryTitle}>{item.title}</Text>
+      <Text style={styles.innerText}>Year: {item?.year}</Text>
+      <Text style={styles.innerText}>imdbID: {item?.imdbId}</Text>
+      <Text style={styles.innerText}>Type: {item?.type}</Text>
     </View>
+    </View>
+    </>
   );
 };
 
@@ -75,7 +87,9 @@ const MoviesScreen = () => {
   };
 
   const renderItem = ({ item }) => {
-    return <MovieListItem item={item} onPress={() => handleMoviePress(item)} />;
+    return <MovieListItem 
+   item={item}
+    onPress={() => handleMoviePress(item)} />;
   };
 
   const renderDetails = () => {
@@ -87,9 +101,16 @@ const MoviesScreen = () => {
 
   return (
     <View style={{ flex: 1 }}>
-      <FlatList data={recommendedMovies} renderItem={renderItem} keyExtractor={(item) => item.id.toString()} />
+      <FlatList 
+      data={recommendedMovies} renderItem={renderItem}
+      keyExtractor={(item) => item.id.toString()}
+      // horizontal={true}
+
+      />
       {renderDetails()}
-      <FlatList data={newMovies} renderItem={renderItem} keyExtractor={(item) => item.id.toString()} />
+      <FlatList 
+      // horizontal={true}
+      data={newMovies} renderItem={renderItem} keyExtractor={(item) => item.id.toString()} />
     </View>
   );
 };
@@ -107,7 +128,36 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
   },
   image: {
-    width: '100%',
-    height: 180,
+    width: '50%',
+    aspectRatio: 1,
+    resizeMode: 'cover',
+    borderRadius: 5,
+    flex: 1,
+    marginHorizontal: 10,
+  },
+  favButton: {
+    width: 20,
+    height: 20,
+    borderRadius: 5,
+    flex: 1,
+    alignSelf: 'center',
+  },
+  categoryTitle: {
+    color: '#6b6969',
+    fontWeight: 'bold',
+    fontSize: 20,
+    justifyContent: 'flex-start',
+  },
+  innerText: {
+    color: '#cac7c7',
+    fontSize: 15,
+    paddingBottom: 10,
+    fontWeight: 'bold',
+  },
+  container: {
+    flex: 1,
+    flexDirection: 'row',
+    paddingHorizontal: 5,
+    margin: 10,
   },
 });
