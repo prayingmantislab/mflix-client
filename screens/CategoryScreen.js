@@ -20,9 +20,19 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 
-const MovieListItem = ({item, onPress}) => (
-  
+const MovieListItem = ({ item, onPress }) => {
+  // Your component code here
 
+  return (
+    <MovieItem
+      poster={item.posterUrl}
+      title={item.title}
+      year={item.year}
+      type={item.type}
+      onPress={() => setSelectedMovie(item.id)}
+    />
+  );
+};
 
 
 function CategoryScreen() {

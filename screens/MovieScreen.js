@@ -100,17 +100,18 @@ const MoviesScreen = () => {
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.container}>
       <FlatList 
+      style={styles.flatList}
       data={recommendedMovies} renderItem={renderItem}
       keyExtractor={(item) => item.id.toString()}
-      // horizontal={true}
+      horizontal={true}
 
       />
-      {renderDetails()}
+      {/* {renderDetails()}
       <FlatList 
-      // horizontal={true}
-      data={newMovies} renderItem={renderItem} keyExtractor={(item) => item.id.toString()} />
+      horizontal={true}
+      data={newMovies} renderItem={renderItem} keyExtractor={(item) => item.id.toString()} /> */}
     </View>
   );
 };
@@ -156,8 +157,21 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    flexDirection: 'row',
-    paddingHorizontal: 5,
-    margin: 10,
+    backgroundColor: '#FFFFFF',
+    width: '100%',
+    height: '100%',
+
+
+
+    // flexDirection: 'row',
+    // paddingHorizontal: 5,
+    // margin: 10,
+  },
+  flatList: {
+    flex: 1,
+    flexGrow: 0,
+    width: '100%',
+    height: '100%',
+
   },
 });

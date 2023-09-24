@@ -32,15 +32,15 @@ const Stack = createNativeStackNavigator();
 const App = () => {
   return (
     <>
-      <Provider store={store}>
-        {/* <NavigationContainer>
+      {/* <Provider store={store}> */}
+      {/* <NavigationContainer>
           <Drawer.Navigator>
             <Drawer.Screen name=' ' component={MenuScreen} />
           </Drawer.Navigator>
         </NavigationContainer> */}
-        {/* <BottomTabNavigator /> */}
-        <MoviesScreen />
-      </Provider>
+      {/* <BottomTabNavigator /> */}
+      <MoviesScreen />
+      {/* </Provider> */}
     </>
   );
 };
